@@ -46,11 +46,11 @@ Because of wide community, bootstrap React application its super easy thing to a
 Now its time to add dependencies that required to be used in this application:
 ```shell script
 # Cognite Javascript SDK
-yarn add @cognite/sdk
+npm install @cognite/sdk --save
 # Cognite Geabox
-yarn add @cognite/gearbox
+npm install @cognite/gearbox --save
 # few packages that are required by Gearbox, including antd
-yarn add @cognite/griff-react@~0.4.2 antd styled-components
+npm install @cognite/griff-react@~0.4.2 antd styled-components --save
 ```
  
 ### Preparing template to start with
@@ -103,8 +103,59 @@ export const App = () => {
 
 ### First run
 And finally application ready to be alive.
+Go to `package.json` file and change configuration for start script:
+```json
+{
+  "start": "HTTPS=true react-scripts start"
+}
+```
+After, you'll able to run local dev server from terminal:
 ```shell script
-HTTPS=true yarn react-scripts start
+npm start
 ```
 After few seconds you'll be redirected to `https://localhost:3000` and see the phrase that has been added before – `We are ready!`.
 If you see it – congrats, you're ready to start developing. Otherwise, you need review previous steps to make it work.
+
+## Add authentication
+Cognite SDK can be used to deal with authentication via OAuth. So, in `App.js` file you need to: 
+* create instance of `CogniteClient` which can be imported from `@cognite/sdk`
+```javascript
+const sdk = new CogniteClient(/* ... */);
+const auth = () => {};
+```
+* use `loginWithOAuth` and `authenticate` methods to authenticate inside `auth()` method
+```javascript
+const auth = async (setClient) => {
+    sdk.loginWithOAuth(/* ... */);
+    await sdk.authenticate();
+};
+```
+* pass client instance inside the component
+```javascript
+const auth = async (setClient) => {
+    // ...
+    await sdk.authenticate();
+    
+    setClient(sdk);
+};
+```
+* to check if you're authenticated or not, change component template a bit to reflect changes
+```jsx harmony
+export const App = () => {
+  // ...
+  
+  return (
+    <>
+      !client 
+        ? <p>You have to authenticate first</p>
+        : <p>Congrats! You're ready to do stuff!</p>
+    </>
+  );
+};
+```
+
+After success authentication via third part auth service you'll be redirected back to local host and should recognise changes on the page.
+
+## First own created component
+
+
