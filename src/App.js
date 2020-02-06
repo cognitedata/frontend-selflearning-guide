@@ -19,10 +19,14 @@ export const App = () => {
   }, []);
 
   return (
-    !client
-      ? <p>You need to authenticate first</p>
-      : (<ClientSDKProvider client={client}>
-          <Content client={client} />
-        </ClientSDKProvider>)
+      <>
+        {
+          !client
+            ? <p>You need to authenticate first</p>
+            : (<ClientSDKProvider client={client}>
+                 <Content client={client} />
+               </ClientSDKProvider>)
+        }
+      </>
   );
 };

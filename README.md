@@ -153,9 +153,11 @@ export const App = () => {
   
   return (
     <>
-      !client 
-        ? <p>You have to authenticate first</p>
-        : <p>Congrats! You're ready to do stuff!</p>
+      {
+        !client 
+          ? <p>You have to authenticate first</p>
+          : <p>Congrats! You're ready to do stuff!</p>
+      }
     </>
   );
 };
@@ -210,3 +212,7 @@ export const Content = ({client}) => {
 * try to make search for an asset in the search bar and select some asset to display events that belong to it
 
 ## Add Events
+Now application acts pretty good, the one thing left – ability to add event to the selected asset.
+To implement this functionality few things are missed:
+* Adding event form is needed
+* Refresh button which forces events table to render
