@@ -104,7 +104,7 @@ export const App = () => {
 ### First run
 And finally application ready to be alive.
 ```shell script
-HTTPS=true react-scripts start
+HTTPS=true yarn react-scripts start
 ```
 After few seconds you'll be redirected to `https://localhost:3000` and see the phrase that has been added before – `We are ready!`.
 If you see it – congrats, you're ready to start developing. Otherwise, you need review previous steps to make it work.
