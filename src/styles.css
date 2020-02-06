@@ -1,0 +1,11 @@
+.header {
+  padding: 10px 50px;
+  border-bottom: 1px solid #dedede;
+}
+.body {
+  padding: 20px 50px;
+}
+
+.actions {
+  padding-bottom: 20px;
+}
