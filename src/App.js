@@ -11,7 +11,7 @@ const auth = async (setClient) => {
   setClient(sdk);
 };
 
-function App() {
+export const App = () => {
   const [client, setClient] = useState();
 
   useEffect(() => {
@@ -25,6 +25,4 @@ function App() {
           <Content client={client} />
         </ClientSDKProvider>)
   );
-}
-
-export default App;
+};

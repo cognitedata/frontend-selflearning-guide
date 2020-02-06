@@ -1,5 +1,5 @@
-import { Form, Input, Button } from 'antd';
 import React from 'react';
+import { Form, Input, Button } from 'antd';
 
 const HorizontalEventForm = ({onSubmit, form}) => {
   const handleSubmit = e => {
@@ -23,7 +23,7 @@ const HorizontalEventForm = ({onSubmit, form}) => {
       </Form.Item>
       <Form.Item>
         <Button htmlType="submit">
-          Add Evenet
+          Add Event
         </Button>
       </Form.Item>
     </Form>
