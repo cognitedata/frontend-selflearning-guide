@@ -39,7 +39,7 @@ export const Content = ({client}) => {
   };
 
   return (
-    <div className="App">
+    <>
       <div className="header">
         <AssetSearch onLiveSearchSelect={onLiveSearchSelect} styles={searchStyle}/>
       </div>
@@ -62,6 +62,6 @@ export const Content = ({client}) => {
             : <p>No asset selected</p>
         }
       </div>
-    </div>
+    </>
   )
 };

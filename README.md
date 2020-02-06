@@ -104,9 +104,16 @@ export const App = () => {
 ### First run
 And finally application ready to be alive.
 Go to `package.json` file and change configuration for start script:
+**For MacOS/Linux (Bash)**
 ```json
 {
   "start": "HTTPS=true react-scripts start"
+}
+```
+**For Windows (cmd.exe)**
+```json
+{
+  "start": "set HTTPS=true&&npm start"
 }
 ```
 After, you'll able to run local dev server from terminal:
@@ -157,5 +164,49 @@ export const App = () => {
 After success authentication via third part auth service you'll be redirected back to local host and should recognise changes on the page.
 
 ## First own created component
+So it's time to add gearbox component into application. This process need to be split on two phases:
+* provide gearbox components with sdk instances
+* add few components to application  
 
+### Connect sdk instance to gearbox components
+Connect SDK to gearbox components super easy to add cause you can use `ClientSDKProvider` for this purposes.
+So, in `App.js` you should wrap whole template with `ClientSDKProvider` component and provide sdk instance as a property.
 
+### Do stuff
+Gearbox component can to be added now. For this purposes new component need to be created:
+* create new file `Content.js` and add code below
+```jsx harmony
+import React, {useState} from 'react';
+
+export const Content = ({client}) => {
+  const [asset, setAsset] = useState();
+  const [updating, setUpdating] = useState(false);
+  const onLiveSearchSelect = (selectedAsset) => {
+    setAsset(selectedAsset);
+  };
+
+  return (
+    <>
+      <div className="header">
+        {/** AssetSearch **/}
+      </div>
+      <div className="body">
+        {
+          asset && !updating
+            ? (
+                <>
+                  {/** AssetEventsPanel **/}
+                </>
+              )
+            : <p>No asset selected</p>
+        }
+      </div>
+    </>
+  )
+};
+```
+* add `AssetSearch` and `AssetEventsPanel` components from gearbox and path required properties to them
+* import this component inside `App.js` component and pass `client` instance of SDK as a property
+* try to make search for an asset in the search bar and select some asset to display events that belong to it
+
+## Add Events
