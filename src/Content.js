@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import { AssetSearch, AssetEventsPanel} from "@cognite/gearbox";
 import { EventForm } from './EventForm';
-import { Row, Col, Button } from 'antd';
 
 const searchStyle = {
   searchResultList: {
@@ -32,6 +31,7 @@ export const Content = ({client}) => {
         startTime
       }
     ]);
+    await refreshEventsTable()
   };
   const refreshEventsTable = async () => {
     await setUpdating(true);
@@ -42,20 +42,14 @@ export const Content = ({client}) => {
     <>
       <div className="header">
         <AssetSearch onLiveSearchSelect={onLiveSearchSelect} styles={searchStyle}/>
+        <button onClick={refreshEventsTable}>Refresh Event Table</button>
       </div>
       <div className="body">
         {
           asset && !updating
             ? (
                 <>
-                  <Row className="actions">
-                    <Col span={12} align={"left"}>
-                      <EventForm onSubmit={onSubmit} />
-                    </Col>
-                    <Col span={12} align={"right"}>
-                      <Button htmlType="button" onClick={refreshEventsTable}>Refresh Event Table</Button>
-                    </Col>
-                  </Row>
+                  <EventForm onSubmit={onSubmit} />
                   <AssetEventsPanel assetId={asset.id} />
                 </>
               )

@@ -1,10 +1,27 @@
 .header {
   padding: 10px 50px;
   border-bottom: 1px solid #dedede;
+  display: flex;
 }
 .body {
   padding: 20px 50px;
 }
 .actions {
   padding-bottom: 20px;
+}
+form {
+  margin-bottom: 10px;
+}
+label {
+  margin: 0 10px;
+}
+button {
+  white-space: nowrap;
+  margin-left: 10px;
+  background: #ffffff;
+  border: 1px solid #dedede;
+  cursor: pointer;
+}
+input {
+  border: 1px solid #dedede;
 }

@@ -1,33 +1,39 @@
-import React from 'react';
-import { Form, Input, Button } from 'antd';
+import React, {useState} from 'react';
 
-const HorizontalEventForm = ({onSubmit, form}) => {
+export const EventForm = ({onSubmit}) => {
+  const [type, setType] = useState('');
+  const [description, setDescription] = useState('');
+
   const handleSubmit = e => {
     e.preventDefault();
-    onSubmit(form.getFieldsValue());
 
-    form.resetFields();
+    if (!type || !description) {
+      return;
+    }
+
+    onSubmit({type, description});
+
+    setType('');
+    setDescription('');
   };
-  
+
   return (
-    <Form layout="inline" onSubmit={handleSubmit}>
-      <Form.Item>
-        {form.getFieldDecorator('type')(
-          <Input placeholder="Event Type" />
-        )}
-      </Form.Item>
-      <Form.Item >
-        {form.getFieldDecorator('description')(
-          <Input placeholder="Description" name={'description'}/>
-        )}
-      </Form.Item>
-      <Form.Item>
-        <Button htmlType="submit">
-          Add Event
-        </Button>
-      </Form.Item>
-    </Form>
+    <form onSubmit={handleSubmit}>
+      <label htmlFor="type">Event type</label>
+      <input
+        type="text"
+        name="type"
+        placeholder="Event type"
+        onChange={e => setType(e.target.value)}
+      />
+      <label htmlFor="description">Description</label>
+      <input
+        type="text"
+        name="description"
+        placeholder="Description"
+        onChange={e => setDescription(e.target.value)}
+      />
+      <button type="submit">Add event</button>
+    </form>
   );
 };
-
-export const EventForm = Form.create({ name: 'horizontal_login' })(HorizontalEventForm);
