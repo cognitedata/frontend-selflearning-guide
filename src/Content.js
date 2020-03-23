@@ -19,7 +19,6 @@ export const Content = ({client}) => {
   };
   const onSubmit = async values => {
     const {description, type} = values;
-    const subtype = 'subtype';
     const startTime = Date.now() - 60 * 1000;
 
     await client.events.create([
@@ -27,11 +26,9 @@ export const Content = ({client}) => {
         assetIds: [asset.id],
         description,
         type,
-        subtype,
         startTime
       }
     ]);
-    await refreshEventsTable()
   };
   const refreshEventsTable = async () => {
     await setUpdating(true);
@@ -42,7 +39,7 @@ export const Content = ({client}) => {
     <>
       <div className="header">
         <AssetSearch onLiveSearchSelect={onLiveSearchSelect} styles={searchStyle}/>
-        <button onClick={refreshEventsTable}>Refresh Event Table</button>
+        <button onClick={refreshEventsTable}>Refresh</button>
       </div>
       <div className="body">
         {

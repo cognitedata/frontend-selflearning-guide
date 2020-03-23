@@ -21,6 +21,7 @@ export const EventForm = ({onSubmit}) => {
     <form onSubmit={handleSubmit}>
       <label htmlFor="type">Event type</label>
       <input
+        value={type}
         type="text"
         name="type"
         placeholder="Event type"
@@ -28,6 +29,7 @@ export const EventForm = ({onSubmit}) => {
       />
       <label htmlFor="description">Description</label>
       <input
+        value={description}
         type="text"
         name="description"
         placeholder="Description"
