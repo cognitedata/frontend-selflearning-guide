@@ -1,3 +1,5 @@
+// Copyright 2020 Cognite AS
+
 import React, {useEffect, useState} from 'react';
 import { ClientSDKProvider } from '@cognite/gearbox';
 import { CogniteClient } from '@cognite/sdk';

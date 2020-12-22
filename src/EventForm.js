@@ -1,3 +1,5 @@
+// Copyright 2020 Cognite AS
+
 import React, {useState} from 'react';
 
 export const EventForm = ({onSubmit}) => {

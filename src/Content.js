@@ -1,3 +1,5 @@
+// Copyright 2020 Cognite AS
+
 import React, {useState} from 'react';
 import { AssetSearch, AssetEventsPanel} from "@cognite/gearbox";
 import { EventForm } from './EventForm';

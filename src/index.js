@@ -1,3 +1,5 @@
+// Copyright 2020 Cognite AS
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import 'antd/dist/antd.css';
