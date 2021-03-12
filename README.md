@@ -48,7 +48,7 @@ npm install @cognite/sdk --save
 # Cognite Geabox
 npm install @cognite/gearbox --save
 # few packages that are required by Gearbox, including antd
-npm install @cognite/griff-react@~0.4.2 antd styled-components --save
+npm install @cognite/griff-react@~0.4.2 antd@3 styled-components --save
 ```
  
 ### Preparing template to start with
